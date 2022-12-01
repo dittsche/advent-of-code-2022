@@ -1,4 +1,4 @@
-object Day25 : PuzzleSolver(24) {
+object Day25 : PuzzleSolver(25) {
 
     override fun solve1(input: String): Number {
         return 0
