@@ -2,7 +2,7 @@ import org.junit.jupiter.api.Assumptions
 import org.junit.jupiter.api.Test
 import kotlin.test.expect
 
-class Day01Test : AbstractPuzzleSolverTest(Day1, -1, -1)
+class Day01Test : AbstractPuzzleSolverTest(Day1, 24000, 45000)
 class Day02Test : AbstractPuzzleSolverTest(Day2, -1, -1)
 class Day03Test : AbstractPuzzleSolverTest(Day3, -1, -1)
 class Day04Test : AbstractPuzzleSolverTest(Day4, -1, -1)
