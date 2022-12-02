@@ -1,14 +1,14 @@
 object Day1 : PuzzleSolver(1) {
 
-    override fun solve1(input: String) = input.toAllCaloriesSum()
+    override fun solve1(input: String) = input.toCaloriesSums()
         .max()
 
-    override fun solve2(input: String) = input.toAllCaloriesSum()
+    override fun solve2(input: String) = input.toCaloriesSums()
         .sortedDescending()
         .take(3)
         .sum()
 
-    private fun String.toAllCaloriesSum(): List<Int> =
+    private fun String.toCaloriesSums(): List<Int> =
         split(System.lineSeparator().repeat(2))
             .map { it.toCaloriesSum() }
 
