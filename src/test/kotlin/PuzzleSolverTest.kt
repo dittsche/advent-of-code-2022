@@ -4,7 +4,7 @@ import kotlin.test.expect
 
 class Day01Test : AbstractPuzzleSolverTest(Day1, 24000, 45000)
 class Day02Test : AbstractPuzzleSolverTest(Day2, 15, 12)
-class Day03Test : AbstractPuzzleSolverTest(Day3, -1, -1)
+class Day03Test : AbstractPuzzleSolverTest(Day3, 157, 70)
 class Day04Test : AbstractPuzzleSolverTest(Day4, -1, -1)
 class Day05Test : AbstractPuzzleSolverTest(Day5, -1, -1)
 class Day06Test : AbstractPuzzleSolverTest(Day6, -1, -1)

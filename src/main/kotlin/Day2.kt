@@ -7,13 +7,12 @@ object Day2 : PuzzleSolver(2) {
     override fun solve1(input: String) =
         input.lines()
             .map { it.toRoundPuzzle1() }
-            .sumOf { it.evaluate() }
+            .sumOf { it.score }
 
     override fun solve2(input: String) =
         input.lines()
             .map { it.toRoundPuzzle2() }
-            .sumOf { it.evaluate() }
-
+            .sumOf { it.score }
 
     private fun String.toShape() = when (this) {
         "A", "X" -> ROCK
@@ -35,14 +34,14 @@ object Day2 : PuzzleSolver(2) {
     private fun String.toRoundPuzzle2() = split(" ")
         .let { RoundPuzzle2(it[0].toShape(), it[1].toExpectedResult()) }
 
-    private data class RoundPuzzle1(private val opponent: Shape, private val own: Shape) {
+    private data class RoundPuzzle1(private val opponent: Shape, private val own: Shape) : Round {
         private val result = when {
             own == opponent -> DRAW
             own.defeats() == opponent -> WIN
             else -> LOSE
         }
 
-        fun evaluate() = own.score + result.score
+        override val score = own.score + result.score
     }
 
     private data class RoundPuzzle2(private val opponent: Shape, private val expectedResult: Result) : Round {
@@ -52,11 +51,11 @@ object Day2 : PuzzleSolver(2) {
             LOSE -> opponent.defeats()
         }
 
-        override fun evaluate() = expectedResult.score + expectedShape.score
+        override val score = expectedResult.score + expectedShape.score
     }
 
     private interface Round {
-        fun evaluate(): Int
+        val score: Int
     }
 
     private enum class Shape(val score: Int) {
