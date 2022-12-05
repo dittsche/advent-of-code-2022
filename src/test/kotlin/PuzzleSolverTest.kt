@@ -6,7 +6,7 @@ class Day01Test : AbstractPuzzleSolverTest(Day1, 24000, 45000)
 class Day02Test : AbstractPuzzleSolverTest(Day2, 15, 12)
 class Day03Test : AbstractPuzzleSolverTest(Day3, 157, 70)
 class Day04Test : AbstractPuzzleSolverTest(Day4, 2, 4)
-class Day05Test : AbstractPuzzleSolverTest(Day5, -1, -1)
+class Day05Test : AbstractPuzzleSolverTest(Day5, "CMZ", "MCD")
 class Day06Test : AbstractPuzzleSolverTest(Day6, -1, -1)
 class Day07Test : AbstractPuzzleSolverTest(Day7, -1, -1)
 class Day08Test : AbstractPuzzleSolverTest(Day8, -1, -1)
@@ -30,8 +30,8 @@ class Day25Test : AbstractPuzzleSolverTest(Day25, -1, -1)
 
 abstract class AbstractPuzzleSolverTest(
     private val sut: PuzzleSolver,
-    private val expected1: Number,
-    private val expected2: Number,
+    private val expected1: Any,
+    private val expected2: Any,
     private val differentInput: Boolean = false
 ) {
 
