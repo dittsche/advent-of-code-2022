@@ -35,14 +35,14 @@ object Day5 : PuzzleSolver(5) {
         lines().asSequence()
             .dropWhile { it.isNotBlank() }
             .filter { it.isNotBlank() }
-            .mapNotNull { moveRegex.find(it)?.groups }
+            .mapNotNull { moveRegex.find(it)?.groupValues }
             .map { it.toMoveValues() }
             .toList()
 
-    private fun MatchGroupCollection.toMoveValues() = Move(
-        this[1]?.value?.toInt()!!,
-        this[2]?.value?.toInt()!! - 1,
-        this[3]?.value?.toInt()!! - 1
+    private fun List<String>.toMoveValues() = Move(
+        this[1].toInt(),
+        this[2].toInt() - 1,
+        this[3].toInt() - 1
     )
 
     private val List<Crate>.topElements
