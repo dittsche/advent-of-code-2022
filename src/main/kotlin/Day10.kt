@@ -1,3 +1,5 @@
+import java.lang.System.lineSeparator
+
 object Day10 : PuzzleSolver(10) {
 
     override fun solve1(input: String) = CPU()
@@ -33,15 +35,13 @@ object Day10 : PuzzleSolver(10) {
             cpu.signalStrengths[cycle+1]!!
                 .let { (it - 1..it + 1) }
 
-        override fun toString(): String {
-            return (0 until 6)
-                .joinToString(System.lineSeparator()) { row ->
-                    (0 until 40).joinToString("") { pixel ->
-                        val cycle = row * 40 + pixel
-                        if (spritePositionAtCycle(cycle).contains(pixel)) "#" else "."
-                    }
+        override fun toString() = lineSeparator() + (0 until 6)
+            .joinToString(lineSeparator()) { row ->
+                (0 until 40).joinToString("") { pixel ->
+                    val cycle = row * 40 + pixel
+                    if (spritePositionAtCycle(cycle).contains(pixel)) "#" else " "
                 }
-        }
+            }
     }
 
     private class CPU {
