@@ -1,3 +1,5 @@
+import java.util.LinkedList
+
 object Day12 : PuzzleSolver(12) {
 
     override fun solve1(input: String): Number {
@@ -6,9 +8,7 @@ object Day12 : PuzzleSolver(12) {
         val startNode = nodes.single { it.value == 'S' }
         val endNode = nodes.single { it.value == 'E' }
 
-        return dijkstra(nodes, startNode)
-            .shortestPathTo(endNode)
-            .size - 1
+        return startNode.bfs(endNode)!!
     }
 
     override fun solve2(input: String): Number {
@@ -18,8 +18,8 @@ object Day12 : PuzzleSolver(12) {
 
         return nodes
             .filter { it.value == 'a' || it.value == 'S' }
-            .map { dijkstra(nodes, it) }
-            .minOf { it.shortestPathTo(endNode).size - 1 }
+            .mapNotNull { startNode -> startNode.bfs(endNode) }
+            .minOf { it }
     }
 
     private fun List<Node>.addNeighbours() {
@@ -41,36 +41,24 @@ object Day12 : PuzzleSolver(12) {
                 (next.value == 'E' && (value == 'y' || value == 'z')) ||
                 (next.value != 'E' && next.value.code <= value.code + 1)
 
-    private fun dijkstra(nodes: List<Node>, startNode: Node): Map<Node, Node?> {
-        val distances = nodes.associateWith { Int.MAX_VALUE }.toMutableMap()
-        val predecessors: MutableMap<Node, Node?> = nodes.associateWith { null }.toMutableMap()
-        val nodesToProcess = nodes.toMutableList()
-        distances[startNode] = 0
-        while (nodesToProcess.isNotEmpty()) {
-            val next = nodesToProcess.minBy { distances[it]!! }
-            nodesToProcess.remove(next)
-            next.neighbours
-                .forEach {
-                    if (it in nodesToProcess) {
-                        val alternative = distances[next]!! + 1
-                        if (alternative < distances[it]!!) {
-                            distances[it] = alternative
-                            predecessors[it] = next
-                        }
-                    }
+    private fun Node.bfs(endNode: Node): Int? {
+        val queue = LinkedList(listOf(this))
+        val visited = mutableSetOf(this)
+        val levels = mutableMapOf(this to 0)
+        while (queue.isNotEmpty()) {
+            val node = queue.remove()
+            if (node == endNode) {
+                return levels[endNode]
+            }
+            node.neighbours.forEach { neighbour ->
+                if (!visited.contains(neighbour)) {
+                    queue.add(neighbour)
+                    visited.add(neighbour)
+                    levels[neighbour] = levels[node]!! + 1
                 }
+            }
         }
-        return predecessors.toMap()
-    }
-
-    private fun Map<Node, Node?>.shortestPathTo(endNode: Node): MutableList<Node> {
-        val path = mutableListOf(endNode)
-        var u = endNode
-        while (this[u] != null) {
-            u = this[u]!!
-            path.add(0, u)
-        }
-        return path
+        return null
     }
 
     private fun String.toNodes() = lines()
