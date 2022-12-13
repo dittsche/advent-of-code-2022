@@ -19,7 +19,7 @@ class Day10Test : AbstractPuzzleSolverTest(Day10, 13140, "\n##  ##  ##  ##  ##  
         "#######       #######       #######     ")
 class Day11Test : AbstractPuzzleSolverTest(Day11, 10605, 2713310158)
 class Day12Test : AbstractPuzzleSolverTest(Day12, 31, 29)
-class Day13Test : AbstractPuzzleSolverTest(Day13, -1, -1)
+class Day13Test : AbstractPuzzleSolverTest(Day13, 13, 140)
 class Day14Test : AbstractPuzzleSolverTest(Day14, -1, -1)
 class Day15Test : AbstractPuzzleSolverTest(Day15, -1, -1)
 class Day16Test : AbstractPuzzleSolverTest(Day16, -1, -1)
