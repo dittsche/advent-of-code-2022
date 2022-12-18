@@ -18,7 +18,7 @@ fun main() {
         Day12,
         Day13,
 //        Day14,
-        Day15,
+        Day15(2000000, (0..4000000)),
         Day16,
         Day17,
         Day18,

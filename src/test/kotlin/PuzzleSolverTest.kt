@@ -11,17 +11,20 @@ class Day06Test : AbstractPuzzleSolverTest(Day6, 10, 29)
 class Day07Test : AbstractPuzzleSolverTest(Day7, 95437, 24933642)
 class Day08Test : AbstractPuzzleSolverTest(Day8, 21, 8)
 class Day09Test : AbstractPuzzleSolverTest(Day9, 13, 1)
-class Day10Test : AbstractPuzzleSolverTest(Day10, 13140, "\n##  ##  ##  ##  ##  ##  ##  ##  ##  ##  \n" +
-        "###   ###   ###   ###   ###   ###   ### \n" +
-        "####    ####    ####    ####    ####    \n" +
-        "#####     #####     #####     #####     \n" +
-        "######      ######      ######      ####\n" +
-        "#######       #######       #######     ")
+class Day10Test : AbstractPuzzleSolverTest(
+    Day10, 13140, "\n##  ##  ##  ##  ##  ##  ##  ##  ##  ##  \n" +
+            "###   ###   ###   ###   ###   ###   ### \n" +
+            "####    ####    ####    ####    ####    \n" +
+            "#####     #####     #####     #####     \n" +
+            "######      ######      ######      ####\n" +
+            "#######       #######       #######     "
+)
+
 class Day11Test : AbstractPuzzleSolverTest(Day11, 10605, 2713310158)
 class Day12Test : AbstractPuzzleSolverTest(Day12, 31, 29)
 class Day13Test : AbstractPuzzleSolverTest(Day13, 13, 140)
 class Day14Test : AbstractPuzzleSolverTest(Day14, 24, 93)
-class Day15Test : AbstractPuzzleSolverTest(Day15, 26, 56000011)
+class Day15Test : AbstractPuzzleSolverTest(Day15(10, (0..20)), 26, 56000011)
 class Day16Test : AbstractPuzzleSolverTest(Day16, -1, -1)
 class Day17Test : AbstractPuzzleSolverTest(Day17, -1, -1)
 class Day18Test : AbstractPuzzleSolverTest(Day18, -1, -1)
